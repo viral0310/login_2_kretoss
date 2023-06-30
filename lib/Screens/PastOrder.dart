@@ -124,7 +124,7 @@ class _PastOrderState extends State<PastOrder> {
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 25,
                 ),
                 const Padding(
                   padding: EdgeInsets.only(left: 40, right: 40),
@@ -173,7 +173,7 @@ class _PastOrderState extends State<PastOrder> {
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 25,
                 ),
                 const Padding(
                   padding: EdgeInsets.only(left: 40, right: 40),
@@ -222,7 +222,7 @@ class _PastOrderState extends State<PastOrder> {
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 25,
                 ),
                 const Padding(
                   padding: EdgeInsets.only(left: 40, right: 40),
@@ -271,7 +271,7 @@ class _PastOrderState extends State<PastOrder> {
                   ),
                 ),
                 const SizedBox(
-                  height: 370,
+                  height: 358,
                 ),
               ],
             ),
