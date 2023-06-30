@@ -73,6 +73,11 @@ flutter:
     - assets/images/india.png
     - assets/images/poland.png
     - assets/images/usa.png
+    - assets/images/SVGRepo_iconCarrier.png
+    - assets/images/search.png
+    - assets/images/Profile icon.png
+    - assets/images/Cart.png
+    - assets/images/back arrow.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -111,12 +111,11 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   child: SizedBox(
                     width: 13.5 * fem,
                     height: 10.08 * fem,
-                    child: IconButton(
-                      onPressed: () {
+                    child: GestureDetector(
+                      onTap: () {
                         Get.back();
                       },
-                      icon: const Icon(Icons.arrow_back),
-                      color: Colors.white,
+                      child: const Icon(Icons.arrow_back, color: Colors.white),
                     ),
                   ),
                 ),

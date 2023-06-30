@@ -73,9 +73,10 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                                   hintText: "Email",
                                   prefixIcon: Icon(Icons.email_outlined),
                                   border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                    Radius.circular(10.0),
-                                  )),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(10.0),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
