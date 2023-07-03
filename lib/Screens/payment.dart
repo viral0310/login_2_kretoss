@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../utils.dart';
+import 'AddCard.dart';
 
 class Payment extends StatefulWidget {
   const Payment({super.key});
@@ -174,7 +175,9 @@ class _PaymentState extends State<Payment> {
                   left: 0 * fem,
                   top: 0 * fem,
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(const AddCard());
+                    },
                     child: Container(
                       padding: EdgeInsets.fromLTRB(
                           57 * fem, 21 * fem, 57 * fem, 21 * fem),

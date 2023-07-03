@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:myapp/Screens/ButtomNavigation.dart';
 import 'package:myapp/Screens/ContactUs.dart';
 import 'package:myapp/Screens/MyInformation.dart';
 import 'package:myapp/Screens/PastOrder.dart';
@@ -275,7 +276,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              Container(
+              /* Container(
                 padding: EdgeInsets.fromLTRB(
                     25.5 * fem, 18 * fem, 29.5 * fem, 18 * fem),
                 width: double.infinity,
@@ -420,7 +421,7 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-              ),
+              ),*/
             ],
           ),
         ),

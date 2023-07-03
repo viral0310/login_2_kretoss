@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:myapp/Screens/ButtomNavigation.dart';
 import 'package:myapp/Screens/HomePage.dart';
 
 import '../utils.dart';
@@ -203,7 +204,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                           ),
                           onPressed: () {
                             Get.to(
-                              const HomePage(),
+                              const navigationbar(),
                             );
                           },
                           child: Text(
