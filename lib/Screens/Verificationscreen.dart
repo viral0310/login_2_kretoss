@@ -1,7 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:myapp/Screens/ButtomNavigation.dart';
-import 'package:myapp/Screens/HomePage.dart';
 
 import '../utils.dart';
 
@@ -25,14 +25,20 @@ class _VerificationScreenState extends State<VerificationScreen> {
 
   @override
   void dispose() {
-    _otpControllers.forEach((controller) => controller.dispose());
-    _otpFocusNodes.forEach((focusNode) => focusNode.dispose());
+    for (var controller in _otpControllers) {
+      controller.dispose();
+    }
+    for (var focusNode in _otpFocusNodes) {
+      focusNode.dispose();
+    }
     super.dispose();
   }
 
   void _submitOTP() {
     String otp = _otpControllers.map((controller) => controller.text).join();
-    print('OTP submitted: $otp');
+    if (kDebugMode) {
+      print('OTP submitted: $otp');
+    }
   }
 
   @override
@@ -41,7 +47,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         child: Container(
           width: double.infinity,
@@ -124,7 +130,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
               Positioned(
                 left: 48.0000305176 * fem,
                 top: 309.0000152588 * fem,
-                child: Container(
+                child: SizedBox(
                   width: 295 * fem,
                   height: 500 * fem,
                   child: Column(
@@ -193,7 +199,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       const SizedBox(
                         height: 90,
                       ),
-                      Container(
+                      SizedBox(
                         width: double.infinity,
                         height: 50 * fem,
                         child: ElevatedButton(

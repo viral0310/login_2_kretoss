@@ -133,6 +133,7 @@ class _PhoneScreenState extends State<PhoneScreen> {
                             borderRadius: BorderRadius.circular(15 * fem),
                           ),
                           child: TextField(
+                            controller: phoneEditingController,
                             keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
                               prefixIcon: DropdownButtonHideUnderline(
