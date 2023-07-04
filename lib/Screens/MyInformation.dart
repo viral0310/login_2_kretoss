@@ -346,7 +346,7 @@ class _MyInformationState extends State<MyInformation> {
                         borderSide: BorderSide(color: Colors.transparent),
                       ),
                       label: Text(
-                        'Phone Number',
+                        'Add Phone Number',
                         style: TextStyle(
                           color: Color(0xFF979797),
                           fontSize: 14,
@@ -354,9 +354,16 @@ class _MyInformationState extends State<MyInformation> {
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      prefixIcon: Icon(
-                        Icons.add,
-                        color: Colors.white,
+                      prefixIcon: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.add,
+                            color: Colors.white,
+                          ),
+                        ],
                       ),
                       suffixIcon: Icon(
                         Icons.arrow_forward_ios,
