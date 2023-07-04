@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,13 +13,40 @@ class CreateAccountScreen extends StatefulWidget {
 }
 
 class _CreateAccountScreenState extends State<CreateAccountScreen> {
+  final TextEditingController emailEditingController = TextEditingController();
+  final TextEditingController passwordEditingController =
+      TextEditingController();
+
+  bool _isButtonEnabled = false;
+
+  @override
+  void initState() {
+    super.initState();
+    emailEditingController.addListener(_updateButtonStatus);
+    passwordEditingController.addListener(_updateButtonStatus);
+  }
+
+  @override
+  void dispose() {
+    emailEditingController.dispose();
+    passwordEditingController.dispose();
+    super.dispose();
+  }
+
+  void _updateButtonStatus() {
+    setState(() {
+      _isButtonEnabled = emailEditingController.text.isNotEmpty &&
+          passwordEditingController.text.isNotEmpty;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 390.0000915527;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         child: Container(
           width: double.infinity,
@@ -48,7 +73,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
               Positioned(
                 left: 47 * fem,
                 top: 294.0000152588 * fem,
-                child: Container(
+                child: SizedBox(
                   width: 295 * fem,
                   height: 274 * fem,
                   child: Column(
@@ -68,9 +93,11 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                                 color: const Color(0xffffffff),
                                 borderRadius: BorderRadius.circular(15 * fem),
                               ),
-                              child: const TextField(
-                                decoration: InputDecoration(
-                                  hintText: "Email",
+                              child: TextField(
+                                keyboardType: TextInputType.emailAddress,
+                                controller: emailEditingController,
+                                decoration: const InputDecoration(
+                                  suffixText: "Email",
                                   prefixIcon: Icon(Icons.email_outlined),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.all(
@@ -90,11 +117,13 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                                 color: const Color(0xffffffff),
                                 borderRadius: BorderRadius.circular(15 * fem),
                               ),
-                              child: const TextField(
+                              child: TextField(
+                                controller: passwordEditingController,
                                 obscureText: true,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   prefixIcon: Icon(Icons.lock_open),
-                                  hintText: "Password",
+                                  //hintText: "Password",
+                                  suffixText: 'Password',
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.all(
                                     Radius.circular(10.0),
@@ -115,7 +144,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                                   Positioned(
                                     left: 60 * fem,
                                     top: 18 * fem,
-                                    child: Container(
+                                    child: SizedBox(
                                       width: 160 * fem,
                                       height: 20 * fem,
                                       child: Row(
@@ -155,7 +184,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                                   Positioned(
                                     left: 0 * fem,
                                     top: 0 * fem,
-                                    child: Container(
+                                    child: SizedBox(
                                       width: 287 * fem,
                                       height: 20 * fem,
                                       child: Row(
@@ -197,7 +226,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                           ],
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: double.infinity,
                         height: 50 * fem,
                         child: ElevatedButton(
@@ -205,22 +234,24 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
+                            backgroundColor:
+                                _isButtonEnabled ? Colors.blue : Colors.grey,
                           ),
-                          onPressed: () {
-                            Get.to(const PhoneScreen());
-                          },
+                          onPressed: _isButtonEnabled
+                              ? () {
+                                  Get.to(const PhoneScreen());
+                                }
+                              : null,
                           child: Center(
-                            child: Center(
-                              child: Text(
-                                'Sign Up',
-                                textAlign: TextAlign.center,
-                                style: SafeGoogleFont(
-                                  'Montserrat',
-                                  fontSize: 16 * ffem,
-                                  fontWeight: FontWeight.w600,
-                                  height: 1.5 * ffem / fem,
-                                  color: const Color(0xffffffff),
-                                ),
+                            child: Text(
+                              'Sign Up',
+                              textAlign: TextAlign.center,
+                              style: SafeGoogleFont(
+                                'Montserrat',
+                                fontSize: 16 * ffem,
+                                fontWeight: FontWeight.w600,
+                                height: 1.5 * ffem / fem,
+                                color: const Color(0xffffffff),
                               ),
                             ),
                           ),
@@ -253,7 +284,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
               Positioned(
                 left: 103 * fem,
                 top: 604.0000152588 * fem,
-                child: Container(
+                child: SizedBox(
                   width: 184 * fem,
                   height: 88 * fem,
                   child: Row(
@@ -263,7 +294,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                         onTap: () {
                           Get.to(const PhoneScreen());
                         },
-                        child: Container(
+                        child: SizedBox(
                           width: 48 * fem,
                           height: 48 * fem,
                           child: Image.asset(
@@ -276,7 +307,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                       SizedBox(
                         width: 20 * fem,
                       ),
-                      Container(
+                      SizedBox(
                         height: double.infinity,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -301,7 +332,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                               onTap: () {
                                 Get.to(const PhoneScreen());
                               },
-                              child: Container(
+                              child: SizedBox(
                                 width: 48 * fem,
                                 height: 48 * fem,
                                 child: Image.asset(
@@ -321,7 +352,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                         onTap: () {
                           Get.to(const PhoneScreen());
                         },
-                        child: Container(
+                        child: SizedBox(
                           width: 48 * fem,
                           height: 48 * fem,
                           child: Image.asset(
@@ -338,7 +369,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
               Positioned(
                 left: 76 * fem,
                 top: 774.0000152588 * fem,
-                child: Container(
+                child: SizedBox(
                   width: 238 * fem,
                   height: 20 * fem,
                   child: Row(

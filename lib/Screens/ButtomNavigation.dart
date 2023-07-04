@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../utils.dart';
 import 'CartScreen.dart';
 import 'ExploreScreen.dart';
 import 'HomePage.dart';

@@ -21,13 +21,35 @@ List<Map> _myJson = [
 ];
 
 class _PhoneScreenState extends State<PhoneScreen> {
+  final TextEditingController phoneEditingController = TextEditingController();
+
+  bool _isButtonEnabled = false;
+
+  @override
+  void initState() {
+    super.initState();
+    phoneEditingController.addListener(_updateButtonStatus);
+  }
+
+  @override
+  void dispose() {
+    phoneEditingController.dispose();
+    super.dispose();
+  }
+
+  void _updateButtonStatus() {
+    setState(() {
+      _isButtonEnabled = phoneEditingController.text.isNotEmpty;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 390.0000915527;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         child: Container(
           width: double.infinity,
@@ -94,7 +116,7 @@ class _PhoneScreenState extends State<PhoneScreen> {
               Positioned(
                 left: 48.0000305176 * fem,
                 top: 309.0000152588 * fem,
-                child: Container(
+                child: SizedBox(
                   width: 295 * fem,
                   height: 128 * fem,
                   child: Column(
@@ -103,60 +125,54 @@ class _PhoneScreenState extends State<PhoneScreen> {
                       Container(
                         margin: EdgeInsets.fromLTRB(
                             0 * fem, 0 * fem, 0 * fem, 20 * fem),
-                        child: TextButton(
-                          onPressed: () {},
-                          style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
+                        child: Container(
+                          width: double.infinity,
+                          height: 58 * fem,
+                          decoration: BoxDecoration(
+                            color: const Color(0xffffffff),
+                            borderRadius: BorderRadius.circular(15 * fem),
                           ),
-                          child: Container(
-                            width: double.infinity,
-                            height: 58 * fem,
-                            decoration: BoxDecoration(
-                              color: const Color(0xffffffff),
-                              borderRadius: BorderRadius.circular(15 * fem),
-                            ),
-                            child: TextField(
-                              keyboardType: TextInputType.phone,
-                              decoration: InputDecoration(
-                                prefixIcon: DropdownButtonHideUnderline(
-                                  child: ButtonTheme(
-                                    alignedDropdown: true,
-                                    child: DropdownButton(
-                                      value: _selected,
-                                      onChanged: (newValue) {
-                                        setState(() {
-                                          _selected = newValue as String?;
-                                        });
-                                      },
-                                      items: _myJson.map((Country) {
-                                        return DropdownMenuItem(
-                                          value: Country['id'],
-                                          child: Row(
-                                            children: [
-                                              CircleAvatar(
-                                                backgroundImage: AssetImage(
-                                                  Country['image'],
-                                                ),
-                                                radius: 8,
-                                              )
-                                            ],
-                                          ),
-                                        );
-                                      }).toList(),
-                                    ),
+                          child: TextField(
+                            keyboardType: TextInputType.phone,
+                            decoration: InputDecoration(
+                              prefixIcon: DropdownButtonHideUnderline(
+                                child: ButtonTheme(
+                                  alignedDropdown: true,
+                                  child: DropdownButton(
+                                    value: _selected,
+                                    onChanged: (newValue) {
+                                      setState(() {
+                                        _selected = newValue as String?;
+                                      });
+                                    },
+                                    items: _myJson.map((Country) {
+                                      return DropdownMenuItem(
+                                        value: Country['id'],
+                                        child: Row(
+                                          children: [
+                                            CircleAvatar(
+                                              backgroundImage: AssetImage(
+                                                Country['image'],
+                                              ),
+                                              radius: 8,
+                                            )
+                                          ],
+                                        ),
+                                      );
+                                    }).toList(),
                                   ),
                                 ),
-                                border: const OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(10.0),
-                                  ),
+                              ),
+                              border: const OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10.0),
                                 ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: double.infinity,
                         height: 50 * fem,
                         child: ElevatedButton(
@@ -165,9 +181,11 @@ class _PhoneScreenState extends State<PhoneScreen> {
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                           ),
-                          onPressed: () {
-                            Get.to(VerificationScreen());
-                          },
+                          onPressed: _isButtonEnabled
+                              ? () {
+                                  Get.to(const VerificationScreen());
+                                }
+                              : null,
                           child: Text(
                             'Continue',
                             textAlign: TextAlign.center,
