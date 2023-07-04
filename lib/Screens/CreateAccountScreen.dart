@@ -234,8 +234,9 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
-                            backgroundColor:
-                                _isButtonEnabled ? Colors.blue : Colors.grey,
+                            backgroundColor: _isButtonEnabled
+                                ? Colors.blue
+                                : const Color(0xff40404b),
                           ),
                           onPressed: _isButtonEnabled
                               ? () {
