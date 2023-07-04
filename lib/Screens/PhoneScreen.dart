@@ -11,7 +11,7 @@ class PhoneScreen extends StatefulWidget {
   State<PhoneScreen> createState() => _PhoneScreenState();
 }
 
-String? _selected;
+String? _selected = '1';
 List<Map> _myJson = [
   {'id': '1', 'image': 'assets/images/india.png', 'name': 'INDIA'},
   {'id': '2', 'image': 'assets/images/canada.png', 'name': 'CANADA'},
@@ -146,14 +146,14 @@ class _PhoneScreenState extends State<PhoneScreen> {
                                         _selected = newValue as String?;
                                       });
                                     },
-                                    items: _myJson.map((Country) {
+                                    items: _myJson.map((country) {
                                       return DropdownMenuItem(
-                                        value: Country['id'],
+                                        value: country['id'],
                                         child: Row(
                                           children: [
                                             CircleAvatar(
                                               backgroundImage: AssetImage(
-                                                Country['image'],
+                                                country['image'],
                                               ),
                                               radius: 8,
                                             )
