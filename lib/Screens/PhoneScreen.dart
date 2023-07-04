@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../utils.dart';
-import 'Verificationscreen.dart';
+import 'VerificationScreen.dart';
 
 class PhoneScreen extends StatefulWidget {
   const PhoneScreen({super.key});
