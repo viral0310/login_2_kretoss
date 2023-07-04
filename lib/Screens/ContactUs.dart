@@ -387,7 +387,7 @@ class _ContactUsState extends State<ContactUs> {
                             Padding(
                               padding:
                                   const EdgeInsets.only(left: 25, right: 25),
-                              child: Container(
+                              child: SizedBox(
                                 height: 50,
                                 width: double.infinity,
                                 child: Expanded(

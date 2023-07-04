@@ -357,7 +357,7 @@ class _AddCardState extends State<AddCard> {
                       fontSize: 10 * ffem,
                       fontWeight: FontWeight.w600,
                       height: 2 * ffem / fem,
-                      color: Color(0xffffffff),
+                      color: const Color(0xffffffff),
                     ),
                   ),
                 ),
